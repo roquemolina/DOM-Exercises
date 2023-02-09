@@ -31,23 +31,39 @@ export default function formValidations() {
     document.addEventListener('submit', e => {
 
         if(e.target.matches('.form-validation'))
-        //e.preventDefault();
-        window.alert('form enviado');
+        e.preventDefault();
+        
         let $loader = document.querySelector('.contact-form-loader'),
         $response = document.querySelector('.contact-form-response');
-
         $loader.classList.remove('none');
 
-        //petition simulation
+        fetch("https://formsubmit.co/ajax/roquenicolasmolina@gmail.com", {
+            method: "POST",
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                name: $form.name.value,
+                email: $form.email.value,
+                subject: $form.subject.value,
+                message: $form.comment.value
+                })
+                })
+    .then(response => response.json())
+    .then(data => {
+        $form.reset();
+        $loader.classList.add('none');
+        console.log(data);
+        $response.innerHTML = `<p>${data.message}</p>`;
+        $response.classList.remove('none');
+    })
+    .catch(error => console.log(error))
+    .finally(() => {
         setTimeout(() => {
-            $loader.classList.add('none');
-            $response.classList.remove('none');
-            setTimeout(() => {
-                $response.classList.add('none');
-                $form.reset();
-            }, 3000);
-        }, 3000);
-
-
+            $response.classList.add('none');
+            $response.innerHTML = "";
+        }, 4000);
+      });
     })
 }
