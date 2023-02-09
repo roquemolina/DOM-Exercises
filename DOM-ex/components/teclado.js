@@ -12,12 +12,12 @@ export function shortcuts (e) {
     */
     //console.log(e.keyCode);
     if(e.keyCode === 65 && e.altKey) {
-        alert(`Alert con el teclado`);
+        alert(`Alert w/ keyboard`);
     };
     if(e.keyCode === 80 && e.altKey) {
-        prompt(`Nuevo prompt con el teclado`);
+        prompt(`Prompt w/ keyboard`);
     };
     if(e.keyCode === 67 && e.altKey) {
-        confirm(`Nuevo confirm con el teclado`);
+        confirm(`Confirm w/ keyboard`);
     };
 };
