@@ -14,20 +14,20 @@ export default function geolocationDetector(id) {
         const accuracy = position.coords.accuracy;
         console.log(position);
 
-        let info = `<p>Your current location:</p>
+        let info = `<p>Tu posicion actual es:</p>
       <br>
-      <p><mark>Latitude</mark>:"${latitude}"</p>
+      <p><mark>Latitud</mark>:"${latitude}"</p>
       <br>
-      <p><mark>Longitude</mark>:"${longitude}"</p>
+      <p><mark>Longitud</mark>:"${longitude}"</p>
       <br>
-      <p><mark>Accuracy</mark>:"${accuracy} meters"</p>
+      <p><mark>Precision</mark>:"${accuracy} metros"</p>
       `;
 
       $geolocationInfo.insertAdjacentHTML("afterbegin", info);
 
       $status.textContent = '';
       $mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-      $mapLink.textContent = `Open in openstreetmap.org`;
+      $mapLink.textContent = `Ver en openstreetmap.org`;
       };
 
     function error(err) {
